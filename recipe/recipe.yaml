@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 1.0.0
+  version: "1.0.1"
 
 package:
   name: libplanc
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/welch-lab/libplanc/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 5f95c724e15ec8c414832f03a42a5465ecda6dc2852f31ad7deb1819f75345b8
+  sha256: d818d852a08b7f6fb1e1821b14f0fc0aded611e58399fd29caeb492a0f1fdc86
 
 build:
   number: 0
@@ -72,7 +72,8 @@ tests:
         - nmflib
 about:
   license: GPL-2.0-or-later
-  summary: '''PLANC'', a highly parallel and extensible NMF/NTF  (Non-negative Matrix/Tensor Factorization) library. Wraps algorithms described in Kannan et. al (2018) <doi:10.1109/TKDE.2017.2767592> and Eswar et. al (2021) <doi:10.1145/3432185>. Implements algorithms described in Welch et al. (2019) <doi:10.1016/j.cell.2019.05.006>, Gao et al. (2021) <doi:10.1038/s41587-021-00867-x>, and Kriebel & Welch (2022) <doi:10.1038/s41467-022-28431-4>.'
+  summary: '''PLANC'', a highly parallel and extensible NMF/NTF  (Non-negative Matrix/Tensor Factorization) library. Wraps algorithms described in Kannan et. al (2018) <doi:10.1109/TKDE.2017.2767592> and Eswar et. al (2021) <doi:10.1145/3432185>. Implements algorithms described in Welch et al. (2019) <doi:10.1016/j.cell.2019.05.006>,
+    Gao et al. (2021) <doi:10.1038/s41587-021-00867-x>, and Kriebel & Welch (2022) <doi:10.1038/s41467-022-28431-4>.'
   license_file:
     - README.md
   homepage: https://github.com/welch-lab/libplanc
