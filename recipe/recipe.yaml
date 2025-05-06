@@ -46,7 +46,9 @@ requirements:
   build:
     - if: unix
       then: make
-      else: gendef
+      else:
+        - gendef
+        - binutils
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
