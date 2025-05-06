@@ -12,7 +12,7 @@ source:
   sha256: 00cbf3da2acc32ae06d407fcd0dbc38f74e5ad3e63f5d3e49d59cc456cc6eb22
 
 build:
-  number: 0
+  number: 1
   script:
     - if: linux and (build_platform != target_platform)
       then:
@@ -39,11 +39,14 @@ build:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
         - cmake --install .
+        - gendef - %LIBRARY_BIN%\nmflib.dll >%LIBRARY_LIB%\nmflib.def
+        - dlltool -k --output-lib %LIBRARY_LIB%\nmflib.dll.a --def %LIBRARY_LIB%\nmflib.def
 
 requirements:
   build:
     - if: unix
       then: make
+      else: gendef
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
