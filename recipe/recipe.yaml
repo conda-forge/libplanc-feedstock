@@ -49,6 +49,8 @@ requirements:
   build:
     - if: unix
       then: make
+    - if: win and (c_compiler == 'gcc')
+      then: m2w64-make
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
