@@ -12,7 +12,7 @@ source:
   sha256: 00cbf3da2acc32ae06d407fcd0dbc38f74e5ad3e63f5d3e49d59cc456cc6eb22
 
 build:
-  number: 1
+  number: 2
   script:
     - if: linux and (build_platform != target_platform)
       then:
@@ -39,16 +39,11 @@ build:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
         - cmake --install .
-        - gendef %LIBRARY_BIN%\nmflib.dll
-        - x86_64-w64-mingw32-dlltool -k --output-lib %LIBRARY_LIB%\nmflib.dll.a --def nmflib.def
 
 requirements:
   build:
     - if: unix
       then: make
-      else:
-        - gendef
-        - binutils
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}

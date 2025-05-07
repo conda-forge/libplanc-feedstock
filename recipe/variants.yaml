@@ -1,0 +1,19 @@
+zip_keys:
+ - [c_compiler, c_stdlib, cxx_compiler]
+
+
+c_stdlib:
+  - if: win
+    then:
+      - vs
+      - m2w64-sysroot
+c_compiler:
+  - if: win
+    then:
+      - vs2019
+      - gcc
+cxx_compiler:
+  - if: win
+    then:
+      - vs2019
+      - gxx
