@@ -34,12 +34,12 @@ build:
         - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
         - cmake --build .
         - cmake --install .
-    - if: win and c_compiler == gcc
+    - if: win and (c_compiler == vc)
       then:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
         - cmake --install .
-    - if: win and c_compiler == gcc
+    - if: win and (c_compiler == gcc)
       then:
         - cmake -G "MinGW Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build .
