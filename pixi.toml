@@ -7,7 +7,7 @@
 
 [project]
 name = "libplanc-feedstock"
-version = "3.48.0"  # conda-smithy version used to generate this file
+version = "3.48.1"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/libplanc-feedstock"
 authors = ["@conda-forge/libplanc"]
 channels = ["conda-forge"]
@@ -55,12 +55,18 @@ description = "Build libplanc-feedstock with variant osx_arm64_ directly (withou
 [tasks."inspect-osx_arm64_"]
 cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_arm64_.yaml"
 description = "List contents of libplanc-feedstock packages built for variant osx_arm64_"
-[tasks."build-win_64_"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_.yaml"
-description = "Build libplanc-feedstock with variant win_64_ directly (without setup scripts)"
-[tasks."inspect-win_64_"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_.yaml"
-description = "List contents of libplanc-feedstock packages built for variant win_64_"
+[tasks."build-win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx.yaml"
+description = "Build libplanc-feedstock with variant win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx directly (without setup scripts)"
+[tasks."inspect-win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx.yaml"
+description = "List contents of libplanc-feedstock packages built for variant win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx"
+[tasks."build-win_64_c_compilervs2019c_stdlibvscxx_compilervs2019"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_c_compilervs2019c_stdlibvscxx_compilervs2019.yaml"
+description = "Build libplanc-feedstock with variant win_64_c_compilervs2019c_stdlibvscxx_compilervs2019 directly (without setup scripts)"
+[tasks."inspect-win_64_c_compilervs2019c_stdlibvscxx_compilervs2019"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_c_compilervs2019c_stdlibvscxx_compilervs2019.yaml"
+description = "List contents of libplanc-feedstock packages built for variant win_64_c_compilervs2019c_stdlibvscxx_compilervs2019"
 
 [feature.smithy.dependencies]
 conda-smithy = "*"

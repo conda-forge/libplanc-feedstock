@@ -7,7 +7,7 @@ c_compiler:
 c_compiler_version:
 - '18'
 c_stdlib:
-- macosx_deployment_target
+- macos_deployment_version
 c_stdlib_version:
 - '10.13'
 channel_sources:
@@ -31,6 +31,9 @@ macos_machine:
 target_platform:
 - osx-64
 zip_keys:
+- - c_compiler
+  - c_stdlib
+  - cxx_compiler
 - - c_compiler_version
   - cxx_compiler_version
 zlib:

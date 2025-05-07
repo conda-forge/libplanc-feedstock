@@ -62,10 +62,17 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64</td>
+              <td>win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=25539&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libplanc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libplanc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_c_compilervs2019c_stdlibvscxx_compilervs2019</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=25539&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libplanc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_c_compilervs2019c_stdlibvscxx_compilervs2019" alt="variant">
                 </a>
               </td>
             </tr>
