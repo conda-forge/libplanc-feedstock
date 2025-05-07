@@ -40,7 +40,7 @@ build:
         - cmake --build . --config Release
         - cmake --install .
         - gendef %LIBRARY_BIN%\nmflib.dll
-        - dlltool -k --output-lib %LIBRARY_LIB%\nmflib.dll.a --def nmflib.def --verbose
+        - x86_64-w64-mingw32-dlltool -k --output-lib %LIBRARY_LIB%\nmflib.dll.a --def nmflib.def
 
 requirements:
   build:
