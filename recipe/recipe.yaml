@@ -34,12 +34,12 @@ build:
         - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
         - cmake --build .
         - cmake --install .
-    - if: win and (c_compiler == vs2019)
+    - if: win and (c_compiler == 'vs2019')
       then:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
         - cmake --install .
-    - if: win and (c_compiler == gcc)
+    - if: win and (c_compiler == 'gcc')
       then:
         - cmake -G "MinGW Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build .
@@ -52,7 +52,7 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
-    - if: c_compiler == gcc
+    - if: c_compiler == 'gcc'
       then: libgomp
       else: llvm-openmp
     - cmake
@@ -61,7 +61,7 @@ requirements:
     - libhwloc >=2.0.0,<3.0.0
     - zlib
     - hdf5 >=1.10
-    - if: c_compiler == gcc
+    - if: c_compiler == 'gcc'
       then: libgomp
       else: llvm-openmp
     - libblas
