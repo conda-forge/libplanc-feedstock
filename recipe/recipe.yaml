@@ -34,7 +34,7 @@ build:
         - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
         - cmake --build .
         - cmake --install .
-    - if: win and (c_compiler == vc)
+    - if: win and (c_compiler == vs2019)
       then:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
