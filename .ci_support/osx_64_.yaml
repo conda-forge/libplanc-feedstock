@@ -7,7 +7,7 @@ c_compiler:
 c_compiler_version:
 - '18'
 c_stdlib:
-- macos_deployment_version
+- macosx_deployment_target
 c_stdlib_version:
 - '10.13'
 channel_sources:
