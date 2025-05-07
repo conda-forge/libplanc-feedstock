@@ -10,7 +10,7 @@ c_stdlib:
   - if: linux
     then: sysroot
   - if: osx
-    then: macos_deployment_version
+    then: macosx_deployment_target
 c_compiler:
   - if: win
     then:
