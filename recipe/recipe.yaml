@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 1.0.1post0
+  version: 1.0.1post1
 
 package:
   name: libplanc
@@ -9,10 +9,10 @@ package:
 
 source:
   url: https://github.com/welch-lab/libplanc/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 00cbf3da2acc32ae06d407fcd0dbc38f74e5ad3e63f5d3e49d59cc456cc6eb22
+  sha256: 05fddb329671caffdfbb852e19b39545c6ca8fa2b599512ab04e6c4d078f6bcf
 
 build:
-  number: 2
+  number: 0
   script:
     - if: linux and (build_platform != target_platform)
       then:
