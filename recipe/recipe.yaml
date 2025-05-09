@@ -34,12 +34,12 @@ build:
         - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
         - cmake --build .
         - cmake --install .
-    - if: win and (c_compiler == 'vs2019')
+    - if: win and (is_mingw == 'false')
       then:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
         - cmake --install .
-    - if: win and (c_compiler == 'gcc')
+    - if: win and (is_mingw == 'true')
       then:
         - cmake -G "Unix Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build .
@@ -47,13 +47,17 @@ build:
 
 requirements:
   build:
-    - if: unix
+    - if: unix or (is_mingw == 'true')
       then: make
-    - if: win and (c_compiler == 'gcc')
-      then: make
-    - ${{ compiler('c') }}
-    - ${{ stdlib("c") }}
-    - ${{ compiler('cxx') }}
+    - if: is_mingw == "false"
+      then:
+        - ${{ compiler('c') }}
+        - ${{ stdlib("c") }}
+        - ${{ compiler('cxx') }}
+      else:
+        - ${{ compiler('m2w64_c') }}
+        - ${{ stdlib("m2w64_c") }}
+        - ${{ compiler('m2w64_cxx') }}
     - if: c_compiler == 'gcc'
       then: libgomp
       else: llvm-openmp
