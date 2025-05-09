@@ -18,6 +18,8 @@ cxx_compiler_version:
 - '13'
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
+is_mingw:
+- false
 libblas:
 - 3.9.* *netlib
 libcblas:
@@ -27,9 +29,6 @@ liblapack:
 target_platform:
 - linux-ppc64le
 zip_keys:
-- - c_compiler
-  - c_stdlib
-  - cxx_compiler
 - - c_compiler_version
   - cxx_compiler_version
 zlib:

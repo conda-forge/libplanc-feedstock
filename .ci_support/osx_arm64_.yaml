@@ -18,6 +18,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '18'
+is_mingw:
+- false
 libblas:
 - 3.9.* *netlib
 libcblas:
@@ -31,9 +33,6 @@ macos_machine:
 target_platform:
 - osx-arm64
 zip_keys:
-- - c_compiler
-  - c_stdlib
-  - cxx_compiler
 - - c_compiler_version
   - cxx_compiler_version
 zlib:

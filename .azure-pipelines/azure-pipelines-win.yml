@@ -8,11 +8,11 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx:
-        CONFIG: win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx
+      win_64_is_mingwFalse:
+        CONFIG: win_64_is_mingwFalse
         UPLOAD_PACKAGES: 'True'
-      win_64_c_compilervs2019c_stdlibvscxx_compilervs2019:
-        CONFIG: win_64_c_compilervs2019c_stdlibvscxx_compilervs2019
+      win_64_is_mingwTrue:
+        CONFIG: win_64_is_mingwTrue
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:

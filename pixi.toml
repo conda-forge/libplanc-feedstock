@@ -55,18 +55,18 @@ description = "Build libplanc-feedstock with variant osx_arm64_ directly (withou
 [tasks."inspect-osx_arm64_"]
 cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_arm64_.yaml"
 description = "List contents of libplanc-feedstock packages built for variant osx_arm64_"
-[tasks."build-win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx.yaml"
-description = "Build libplanc-feedstock with variant win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx directly (without setup scripts)"
-[tasks."inspect-win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx.yaml"
-description = "List contents of libplanc-feedstock packages built for variant win_64_c_compilergccc_stdlibm2w64-sysrootcxx_compilergxx"
-[tasks."build-win_64_c_compilervs2019c_stdlibvscxx_compilervs2019"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_c_compilervs2019c_stdlibvscxx_compilervs2019.yaml"
-description = "Build libplanc-feedstock with variant win_64_c_compilervs2019c_stdlibvscxx_compilervs2019 directly (without setup scripts)"
-[tasks."inspect-win_64_c_compilervs2019c_stdlibvscxx_compilervs2019"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_c_compilervs2019c_stdlibvscxx_compilervs2019.yaml"
-description = "List contents of libplanc-feedstock packages built for variant win_64_c_compilervs2019c_stdlibvscxx_compilervs2019"
+[tasks."build-win_64_is_mingwFalse"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_is_mingwFalse.yaml"
+description = "Build libplanc-feedstock with variant win_64_is_mingwFalse directly (without setup scripts)"
+[tasks."inspect-win_64_is_mingwFalse"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_is_mingwFalse.yaml"
+description = "List contents of libplanc-feedstock packages built for variant win_64_is_mingwFalse"
+[tasks."build-win_64_is_mingwTrue"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_is_mingwTrue.yaml"
+description = "Build libplanc-feedstock with variant win_64_is_mingwTrue directly (without setup scripts)"
+[tasks."inspect-win_64_is_mingwTrue"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_is_mingwTrue.yaml"
+description = "List contents of libplanc-feedstock packages built for variant win_64_is_mingwTrue"
 
 [feature.smithy.dependencies]
 conda-smithy = "*"
