@@ -1,0 +1,7 @@
+is_mingw:
+  - if: win
+    then:
+      - true
+      - false
+    else:
+      - false
