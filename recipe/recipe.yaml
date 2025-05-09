@@ -34,12 +34,12 @@ build:
         - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
         - cmake --build .
         - cmake --install .
-    - if: win and (is_mingw == 'false')
+    - if: win and (is_mingw == false)
       then:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
         - cmake --install .
-    - if: win and (is_mingw == 'true')
+    - if: win and (is_mingw == true)
       then:
         - cmake -G "Unix Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build .
@@ -47,9 +47,9 @@ build:
 
 requirements:
   build:
-    - if: unix or (is_mingw == 'true')
+    - if: unix or (is_mingw == true)
       then: make
-    - if: is_mingw == "false"
+    - if: is_mingw == false
       then:
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
