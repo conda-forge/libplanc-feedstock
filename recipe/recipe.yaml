@@ -12,8 +12,8 @@ source:
   sha256: 05fddb329671caffdfbb852e19b39545c6ca8fa2b599512ab04e6c4d078f6bcf
 
 build:
-  number: 0
-  string: ${{ hash }}${{ is_mingw }}
+  number: 1
+  string: ${{ is_mingw }}h${{ hash }}_${{ build_number }}
   script:
     - if: linux and (build_platform != target_platform)
       then:
@@ -35,12 +35,12 @@ build:
         - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
         - cmake --build .
         - cmake --install .
-    - if: win and (is_mingw == '_vs')
+    - if: win and (is_mingw == 'vs_')
       then:
         - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
         - cmake --build . --config Release
         - cmake --install .
-    - if: win and (is_mingw == '_mingw')
+    - if: win and (is_mingw == 'mingw_')
       then:
         - cmake -G "Unix Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON -DCMAKE_INSTALL_PREFIX="%PREFIX%/Library" %CMAKE_ARGS%
         - cmake --build .
@@ -48,9 +48,9 @@ build:
 
 requirements:
   build:
-    - if: unix or (is_mingw == '_mingw')
+    - if: unix or (is_mingw == 'mingw_')
       then: make
-    - if: is_mingw == '_mingw'
+    - if: is_mingw == 'mingw_'
       then:
         - ${{ compiler('m2w64_c') }}
         - ${{ stdlib("m2w64_c") }}
@@ -59,12 +59,12 @@ requirements:
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
         - ${{ compiler('cxx') }}
-    - if: (c_compiler == 'gcc') or (is_mingw == '_mingw')
+    - if: (c_compiler == 'gcc') or (is_mingw == 'mingw_')
       then: libgomp
       else: llvm-openmp
     - cmake
     - pkg-config
-    - if: is_mingw == '_mingw'
+    - if: is_mingw == 'mingw_'
       then:
         - libgcc <15
         - libgomp <15
@@ -72,7 +72,7 @@ requirements:
     - libhwloc >=2.0.0,<3.0.0
     - zlib
     - hdf5 >=1.10
-    - if: (c_compiler == 'gcc') or (is_mingw == '_mingw')
+    - if: (c_compiler == 'gcc') or (is_mingw == 'mingw_')
       then: libgomp
       else: llvm-openmp
     - libblas
@@ -84,7 +84,7 @@ requirements:
     - cpp-argparse
     - if: win
       then: dlfcn-win32
-    - if: is_mingw == '_mingw'
+    - if: is_mingw == 'mingw_'
       then:
         - libgcc <15
         - libgomp <15
@@ -93,7 +93,7 @@ requirements:
     - if: osx and arm64
       then: libblas * *accelerate
       else: libblas
-    - if: is_mingw == '_mingw'
+    - if: is_mingw == 'mingw_'
       then:
         - libgcc <15
         - libgomp <15
