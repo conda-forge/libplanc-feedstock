@@ -13,6 +13,7 @@ source:
 
 build:
   number: 0
+  string: ${{ is_mingw == false | default('mingw') }}${{ hash }}
   script:
     - if: linux and (build_platform != target_platform)
       then:
