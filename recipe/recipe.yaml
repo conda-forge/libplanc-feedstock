@@ -63,6 +63,8 @@ requirements:
       else: llvm-openmp
     - cmake
     - pkg-config
+    - if: is_mingw == true
+      then: libgcc <15
   host:
     - libhwloc >=2.0.0,<3.0.0
     - zlib
