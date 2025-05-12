@@ -7,7 +7,7 @@
 
 [project]
 name = "libplanc-feedstock"
-version = "3.48.0"  # conda-smithy version used to generate this file
+version = "3.48.1"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/libplanc-feedstock"
 authors = ["@conda-forge/libplanc"]
 channels = ["conda-forge"]
@@ -55,12 +55,18 @@ description = "Build libplanc-feedstock with variant osx_arm64_ directly (withou
 [tasks."inspect-osx_arm64_"]
 cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/osx_arm64_.yaml"
 description = "List contents of libplanc-feedstock packages built for variant osx_arm64_"
-[tasks."build-win_64_"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_.yaml"
-description = "Build libplanc-feedstock with variant win_64_ directly (without setup scripts)"
-[tasks."inspect-win_64_"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_.yaml"
-description = "List contents of libplanc-feedstock packages built for variant win_64_"
+[tasks."build-win_64_is_mingw_mingw"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_is_mingw_mingw.yaml"
+description = "Build libplanc-feedstock with variant win_64_is_mingw_mingw directly (without setup scripts)"
+[tasks."inspect-win_64_is_mingw_mingw"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_is_mingw_mingw.yaml"
+description = "List contents of libplanc-feedstock packages built for variant win_64_is_mingw_mingw"
+[tasks."build-win_64_is_mingw_vs"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_is_mingw_vs.yaml"
+description = "Build libplanc-feedstock with variant win_64_is_mingw_vs directly (without setup scripts)"
+[tasks."inspect-win_64_is_mingw_vs"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_is_mingw_vs.yaml"
+description = "List contents of libplanc-feedstock packages built for variant win_64_is_mingw_vs"
 
 [feature.smithy.dependencies]
 conda-smithy = "*"
