@@ -88,7 +88,9 @@ requirements:
       then: libblas * *accelerate
       else: libblas
     - if: is_mingw == true
-      then: libgcc <15
+      then:
+        - libgcc <15
+        - libgomp <15
   run_exports:
     - ${{ pin_subpackage('libplanc', exact=True) }}
 tests:
