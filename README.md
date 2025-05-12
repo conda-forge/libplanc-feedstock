@@ -62,17 +62,17 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_is_mingwFalse</td>
+              <td>win_64_is_mingw_mingw</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=25539&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libplanc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_is_mingwFalse" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libplanc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_is_mingw_mingw" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_is_mingwTrue</td>
+              <td>win_64_is_mingw_vs</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=25539&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libplanc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_is_mingwTrue" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libplanc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_is_mingw_vs" alt="variant">
                 </a>
               </td>
             </tr>

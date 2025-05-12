@@ -8,11 +8,11 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_is_mingwFalse:
-        CONFIG: win_64_is_mingwFalse
+      win_64_is_mingw_mingw:
+        CONFIG: win_64_is_mingw_mingw
         UPLOAD_PACKAGES: 'True'
-      win_64_is_mingwTrue:
-        CONFIG: win_64_is_mingwTrue
+      win_64_is_mingw_vs:
+        CONFIG: win_64_is_mingw_vs
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
