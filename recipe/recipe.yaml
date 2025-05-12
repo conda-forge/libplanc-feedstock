@@ -83,6 +83,8 @@ requirements:
     - if: osx and arm64
       then: libblas * *accelerate
       else: libblas
+    - if: is_mingw == true
+      then: libgcc <15
   run_exports:
     - ${{ pin_subpackage('libplanc', exact=True) }}
 tests:
