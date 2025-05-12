@@ -1,7 +1,7 @@
 is_mingw:
   - if: win
     then:
-      - true
-      - false
+      - _mingw
+      - _vs
     else:
-      - false
+      - ''
