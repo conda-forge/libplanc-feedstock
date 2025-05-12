@@ -83,6 +83,11 @@ requirements:
     - cpp-argparse
     - if: win
       then: dlfcn-win32
+    - if: is_mingw == true
+      then:
+        - libgcc <15
+        - libgomp <15
+
   run:
     - if: osx and arm64
       then: libblas * *accelerate
