@@ -2,6 +2,7 @@ schema_version: 1
 
 context:
   version: 1.0.1post1
+  build_number: 2
 
 package:
   name: libplanc
@@ -12,7 +13,7 @@ source:
   sha256: 05fddb329671caffdfbb852e19b39545c6ca8fa2b599512ab04e6c4d078f6bcf
 
 build:
-  number: 1
+  number: ${{ build_number }}
   string: ${{ is_mingw }}h${{ hash }}_${{ build_number }}
   script:
     - if: linux and (build_platform != target_platform)
