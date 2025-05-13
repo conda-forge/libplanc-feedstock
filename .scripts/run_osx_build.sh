@@ -72,7 +72,7 @@ else
         EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --test skip"
     fi
 
-    rattler-build build --recipe ./recipe \
+    rattler-build build --experimental --recipe ./recipe \
         -m ./.ci_support/${CONFIG}.yaml \
         ${EXTRA_CB_OPTIONS:-} \
         --target-platform "${HOST_PLATFORM}" \
