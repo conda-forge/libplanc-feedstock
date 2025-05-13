@@ -158,7 +158,9 @@ outputs:
             - python
             - cross-python_${{ target_platform }}
       host:
-        - ${{ pin_subpackage("libplanc", exact=True) }}
+        - if: win
+          then: ${{ pin_subpackage("libplanc * *vs", exact=True) }}
+          else: ${{ pin_subpackage("libplanc", exact=True) }}
         - if: (c_compiler == 'gcc')
           then: libgomp
           else: llvm-openmp
