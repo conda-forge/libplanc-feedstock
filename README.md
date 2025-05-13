@@ -89,6 +89,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libplanc-green.svg)](https://anaconda.org/conda-forge/libplanc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libplanc.svg)](https://anaconda.org/conda-forge/libplanc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libplanc.svg)](https://anaconda.org/conda-forge/libplanc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libplanc.svg)](https://anaconda.org/conda-forge/libplanc) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pyplanc-green.svg)](https://anaconda.org/conda-forge/pyplanc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyplanc.svg)](https://anaconda.org/conda-forge/pyplanc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyplanc.svg)](https://anaconda.org/conda-forge/pyplanc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyplanc.svg)](https://anaconda.org/conda-forge/pyplanc) |
 
 Installing libplanc
 ===================
@@ -100,16 +101,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libplanc` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libplanc, pyplanc` can be installed with `conda`:
 
 ```
-conda install libplanc
+conda install libplanc pyplanc
 ```
 
 or with `mamba`:
 
 ```
-mamba install libplanc
+mamba install libplanc pyplanc
 ```
 
 It is possible to list all of the versions of `libplanc` available on your platform with `conda`:
