@@ -115,7 +115,27 @@ outputs:
       skip: is_mingw == 'mingw_'
       number: ${{ py_build_number }}
       string: ${{ python | version_to_buildstring }}_h${{ hash }}_${{ py_build_number }}
-      script: pip install . -vv --no-deps --no-build-isolation
+      script:
+        - if: osx and (build_platform != target_platform)
+          then:
+          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS_EXITCODE=0;-DCMAKE_CXX_FLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
+        - if: osx and (build_platform == target_platform)
+          then:
+          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DCMAKE_CXX_FLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
+        - if: linux and (build_platform != target_platform)
+          then:
+          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS_EXITCODE=0;-DBLA_VENDOR="Generic"
+        - if: linux and (build_platform == target_platform)
+          then:
+          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DBLA_VENDOR="Generic"
+        - if: win and (is_mingw == 'vs_')
+          then:
+          - set SKBUILD_CMAKE_ARGS=%CMAKE_ARGS%
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=-DCBLAS_H_DIR=%LIBRARY_INC%
     requirements:
       build:
         - if: unix
