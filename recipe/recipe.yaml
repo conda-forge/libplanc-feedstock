@@ -162,10 +162,15 @@ outputs:
         - if: (c_compiler == 'gcc')
           then: libgomp
           else: llvm-openmp
-        - libblas
-        - libcblas
-        - liblapack
-        - libtmglib
+        - if: osx and arm64
+          then:
+            - libblas * *accelerate
+            - libcblas * *accelerate
+            - liblapack * *accelerate
+          else:
+            - libblas
+            - libcblas
+            - liblapack
         - indicators
         - armadillo
         - nanobind
