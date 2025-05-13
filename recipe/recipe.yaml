@@ -121,7 +121,7 @@ outputs:
           - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
           - export MACOSX_DEPLOYMENT_TARGET=10.13
           - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS=1
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS=1;-DHDF5_LINKS_EXITCODE=0
         - if: osx and (build_platform == target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
@@ -131,7 +131,7 @@ outputs:
         - if: linux and (build_platform != target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS=1;-DBLA_VENDOR="Generic"
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS=1;-DHDF5_LINKS_EXITCODE=0;-DBLA_VENDOR="Generic"
         - if: linux and (build_platform == target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
