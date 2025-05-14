@@ -7,8 +7,8 @@ context:
   py_version: 0.0.1
 
 source:
-  url: https://github.com/welch-lab/libplanc/archive/refs/tags/${{ libc_version }}.tar.gz
-  sha256: 05fddb329671caffdfbb852e19b39545c6ca8fa2b599512ab04e6c4d078f6bcf
+  url: https://github.com/welch-lab/libplanc/archive/refs/heads/master.tar.gz
+  sha256: 4e52542ccb96545fb6c59c93e528eb2f7c0f3c08544f4a42b57a97990352bd17
 
 build:
   number: ${{ build_number }}
@@ -121,13 +121,13 @@ outputs:
         - if: osx and (build_platform != target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' $CMAKE_ARGS"
-          - export MACOSX_DEPLOYMENT_TARGET=10.13
+          - export MACOSX_DEPLOYMENT_TARGET=11.0
           - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
           - pip install . -vv --no-deps --no-build-isolation
         - if: osx and (build_platform == target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
-          - export MACOSX_DEPLOYMENT_TARGET=10.13
+          - export MACOSX_DEPLOYMENT_TARGET=11.0
           - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
           - pip install . -vv --no-deps --no-build-isolation
         - if: linux and (build_platform != target_platform)
