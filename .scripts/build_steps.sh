@@ -73,7 +73,7 @@ if [[ "${BUILD_WITH_CONDA_DEBUG:-0}" == 1 ]]; then
     echo "rattler-build currently doesn't support debug mode"
 else
 
-    rattler-build build --experimental --recipe "${RECIPE_ROOT}" \
+    rattler-build build --recipe "${RECIPE_ROOT}" \
      -m "${CI_SUPPORT}/${CONFIG}.yaml" \
      ${EXTRA_CB_OPTIONS:-} \
      --target-platform "${HOST_PLATFORM}" \
