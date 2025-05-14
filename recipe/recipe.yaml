@@ -6,11 +6,15 @@ context:
   py_build_number: 0
   py_version: 0.0.1
 
-cache:
-  source:
-    url: https://github.com/welch-lab/libplanc/archive/refs/tags/${{ libc_version }}.tar.gz
-    sha256: 05fddb329671caffdfbb852e19b39545c6ca8fa2b599512ab04e6c4d078f6bcf
-  requirements:
+source:
+  url: https://github.com/welch-lab/libplanc/archive/refs/tags/${{ libc_version }}.tar.gz
+  sha256: 05fddb329671caffdfbb852e19b39545c6ca8fa2b599512ab04e6c4d078f6bcf
+
+outputs:
+  - package:
+      name: libplanc
+      version: ${{ libc_version|replace("-", "_") }}
+    requirements:
       build:
         - if: unix or (is_mingw == 'mingw_')
           then: make
@@ -61,10 +65,12 @@ cache:
           then:
             - libgcc <15
             - libgomp <15
-  build:
-    number: ${{ build_number }}
-    string: ${{ is_mingw }}h${{ hash }}_${{ build_number }}
-    script:
+      run_exports:
+        - ${{ pin_subpackage('libplanc', exact=True) }}
+    build:
+      number: ${{ build_number }}
+      string: ${{ is_mingw }}h${{ hash }}_${{ build_number }}
+      script:
       - if: linux and (build_platform != target_platform)
         then:
           - cmake -S $SRC_DIR -DHDF5_LINKS_EXITCODE=0 -DBUILD_EXECUTABLE=ON -DBLA_VENDOR="Generic" $CMAKE_ARGS
@@ -95,13 +101,6 @@ cache:
           - cmake -G "Unix Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON -DCMAKE_INSTALL_PREFIX="%PREFIX%/Library" %CMAKE_ARGS%
           - cmake --build .
           - cmake --install .
-outputs:
-  - package:
-      name: libplanc
-      version: ${{ libc_version|replace("-", "_") }}
-    requirements:
-      run_exports:
-        - ${{ pin_subpackage('libplanc', exact=True) }}
     tests:
       - script:
           - plancnmf --help
