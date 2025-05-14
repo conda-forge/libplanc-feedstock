@@ -10,6 +10,9 @@ source:
   url: https://github.com/welch-lab/libplanc/archive/refs/tags/${{ libc_version }}.tar.gz
   sha256: 05fddb329671caffdfbb852e19b39545c6ca8fa2b599512ab04e6c4d078f6bcf
 
+build:
+  number: ${{ build_number }}
+
 outputs:
   - package:
       name: libplanc
