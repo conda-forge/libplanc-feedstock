@@ -118,28 +118,28 @@ outputs:
       script:
         - if: osx and (build_platform != target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
+          - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' $CMAKE_ARGS"
           - export MACOSX_DEPLOYMENT_TARGET=10.13
           - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS=1;-DHDF5_LINKS_EXITCODE=0
+          - pip install . -vv --no-deps --no-build-isolation
         - if: osx and (build_platform == target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
+          - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
           - export MACOSX_DEPLOYMENT_TARGET=10.13
           - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DCMAKE_CXX_FLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
+          - pip install . -vv --no-deps --no-build-isolation
         - if: linux and (build_platform != target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DHDF5_LINKS=1;-DHDF5_LINKS_EXITCODE=0;-DBLA_VENDOR="Generic"
+          - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' -DBLA_VENDOR='Generic' $CMAKE_ARGS"
+          - pip install . -vv --no-deps --no-build-isolation
         - if: linux and (build_platform == target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS=$CMAKE_ARGS
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.args=-DBLA_VENDOR="Generic"
+          - export SKBUILD_CMAKE_ARGS="-DBLA_VENDOR='Generic' $CMAKE_ARGS"
+          - pip install . -vv --no-deps --no-build-isolation
         - if: win and (is_mingw == 'vs_')
           then:
-          - set SKBUILD_CMAKE_ARGS=%CMAKE_ARGS%
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=-DCBLAS_H_DIR=%LIBRARY_INC%
+          - set SKBUILD_CMAKE_ARGS="-DCBLAS_H_DIR=%LIBRARY_INC% %CMAKE_ARGS%"
+          - pip install . -vv --no-deps --no-build-isolation
     requirements:
       build:
         - if: unix
