@@ -123,25 +123,25 @@ outputs:
           - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' $CMAKE_ARGS"
           - export MACOSX_DEPLOYMENT_TARGET=11.0
           - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
-          - pip install . -vv --no-deps --no-build-isolation
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: osx and (build_platform == target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
           - export MACOSX_DEPLOYMENT_TARGET=11.0
           - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
-          - pip install . -vv --no-deps --no-build-isolation
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: linux and (build_platform != target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' -DBLA_VENDOR='Generic' $CMAKE_ARGS"
-          - pip install . -vv --no-deps --no-build-isolation
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: linux and (build_platform == target_platform)
           then:
           - export SKBUILD_CMAKE_ARGS="-DBLA_VENDOR='Generic' $CMAKE_ARGS"
-          - pip install . -vv --no-deps --no-build-isolation
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: win and (is_mingw == 'vs_')
           then:
           - set SKBUILD_CMAKE_ARGS="-DCBLAS_H_DIR=%LIBRARY_INC% %CMAKE_ARGS%"
-          - pip install . -vv --no-deps --no-build-isolation
+          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
     requirements:
       build:
         - if: unix
