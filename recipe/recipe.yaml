@@ -107,7 +107,7 @@ outputs:
     tests:
       - script:
           - plancnmf --help
-    #  - package_contents:
+    #  - package_contents:'/'
     #      lib:
     #        - nmflib
   - package:
@@ -136,7 +136,7 @@ outputs:
           - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: linux and (build_platform == target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS="-DBLA_VENDOR='Generic' $CMAKE_ARGS"
+          - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
           - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: win and (is_mingw == 'vs_')
           then:
