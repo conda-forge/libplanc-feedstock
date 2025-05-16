@@ -12,7 +12,7 @@ recipe:
 
 source:
   url: https://github.com/welch-lab/libplanc/archive/refs/tags/py-${{ py_version }}.tar.gz
-  sha256: ac6226d5b04708cba7167bc89e658aeecd1edadcfd23d1aa79a9e7e297fbc2a0
+  sha256: 8edc8ece72c24a23372befb3d739b059a8b30354fb18770cf91f7254ecb8d565
 
 build:
   number: ${{ build_number }}
