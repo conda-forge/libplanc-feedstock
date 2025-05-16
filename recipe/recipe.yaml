@@ -8,7 +8,7 @@ context:
 
 source:
   url: https://github.com/welch-lab/libplanc/archive/refs/heads/master.tar.gz
-  sha256: 4e52542ccb96545fb6c59c93e528eb2f7c0f3c08544f4a42b57a97990352bd17
+  sha256: 6eeb753355e78ae4b58666cd96354a0d3f9a24ad7c53be2a0652d5a1519f1ec1
 
 build:
   number: ${{ build_number }}
