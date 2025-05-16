@@ -5,3 +5,4 @@ is_mingw:
       - vs_
     else:
       - ''
+python_min: "3.10"
