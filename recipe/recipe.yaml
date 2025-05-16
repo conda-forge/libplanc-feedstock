@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   libc_version: 1.0.1post1
-  build_number: 3
+  build_number: 4
   py_build_number: 0
   py_version: 0.0.1post0
 
@@ -78,36 +78,36 @@ outputs:
       number: ${{ build_number }}
       string: ${{ is_mingw }}h${{ hash }}_${{ build_number }}
       script:
-      - if: linux and (build_platform != target_platform)
-        then:
-          - cmake -S $SRC_DIR -DHDF5_LINKS_EXITCODE=0 -DBUILD_EXECUTABLE=ON -DBLA_VENDOR="Generic" $CMAKE_ARGS
-          - cmake --build .
-          - cmake --install .
-      - if: linux and (build_platform == target_platform)
-        then:
-          - cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON -DBLA_VENDOR="Generic" $CMAKE_ARGS
-          - cmake --build .
-          - cmake --install .
-      - if: osx and (build_platform != target_platform)
-        then:
-          - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DHDF5_LINKS_EXITCODE=0 -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
-          - cmake --build .
-          - cmake --install .
-      - if: osx and (build_platform == target_platform)
-        then:
-          - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
-          - cmake --build .
-          - cmake --install .
-      - if: win and (is_mingw == 'vs_')
-        then:
-          - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
-          - cmake --build . --config Release
-          - cmake --install .
-      - if: win and (is_mingw == 'mingw_')
-        then:
-          - cmake -G "Unix Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON -DCMAKE_INSTALL_PREFIX="%PREFIX%/Library" %CMAKE_ARGS%
-          - cmake --build .
-          - cmake --install .
+        - if: linux and (build_platform != target_platform)
+          then:
+            - cmake -S $SRC_DIR -DHDF5_LINKS_EXITCODE=0 -DBUILD_EXECUTABLE=ON -DBLA_VENDOR="Generic" $CMAKE_ARGS
+            - cmake --build .
+            - cmake --install .
+        - if: linux and (build_platform == target_platform)
+          then:
+            - cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON -DBLA_VENDOR="Generic" $CMAKE_ARGS
+            - cmake --build .
+            - cmake --install .
+        - if: osx and (build_platform != target_platform)
+          then:
+            - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DHDF5_LINKS_EXITCODE=0 -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
+            - cmake --build .
+            - cmake --install .
+        - if: osx and (build_platform == target_platform)
+          then:
+            - cmake -E env CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY cmake -S $SRC_DIR -DBUILD_EXECUTABLE=ON $CMAKE_ARGS
+            - cmake --build .
+            - cmake --install .
+        - if: win and (is_mingw == 'vs_')
+          then:
+            - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
+            - cmake --build . --config Release
+            - cmake --install .
+        - if: win and (is_mingw == 'mingw_')
+          then:
+            - cmake -G "Unix Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON -DCMAKE_INSTALL_PREFIX="%PREFIX%/Library" %CMAKE_ARGS%
+            - cmake --build .
+            - cmake --install .
     tests:
       - script:
           - plancnmf --help
@@ -124,28 +124,28 @@ outputs:
       script:
         - if: osx and (build_platform != target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' $CMAKE_ARGS"
-          - export MACOSX_DEPLOYMENT_TARGET=10.13
-          - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
+            - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' $CMAKE_ARGS"
+            - export MACOSX_DEPLOYMENT_TARGET=10.13
+            - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
+            - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: osx and (build_platform == target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
-          - export MACOSX_DEPLOYMENT_TARGET=10.13
-          - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
+            - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
+            - export MACOSX_DEPLOYMENT_TARGET=10.13
+            - export CXXFLAGS=-D_LIBCPP_DISABLE_AVAILABILITY
+            - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: linux and (build_platform != target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' -DBLA_VENDOR='Generic' $CMAKE_ARGS"
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
+            - export SKBUILD_CMAKE_ARGS="-DHDF5_LINKS=1 -DHDF5_LINKS_EXITCODE='0' -DBLA_VENDOR='Generic' $CMAKE_ARGS"
+            - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: linux and (build_platform == target_platform)
           then:
-          - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
+            - export SKBUILD_CMAKE_ARGS="$CMAKE_ARGS"
+            - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: win and (is_mingw == 'vs_')
           then:
-          - set SKBUILD_CMAKE_ARGS="-DCBLAS_H_DIR=%LIBRARY_INC% %CMAKE_ARGS%"
-          - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
+            - set SKBUILD_CMAKE_ARGS="-DCBLAS_H_DIR=%LIBRARY_INC% %CMAKE_ARGS%"
+            - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
     requirements:
       build:
         - if: unix
@@ -195,11 +195,11 @@ outputs:
         - threadpoolctl
     tests:
       - python:
-          imports:
-            "pyplanc"
+          imports: "pyplanc"
 about:
   license: GPL-2.0-or-later
-  summary: '''PLANC'', a highly parallel and extensible NMF/NTF  (Non-negative Matrix/Tensor Factorization) library. Wraps algorithms described in Kannan et. al (2018) <doi:10.1109/TKDE.2017.2767592> and Eswar et. al (2021) <doi:10.1145/3432185>. Implements algorithms described in Welch et al. (2019) <doi:10.1016/j.cell.2019.05.006>, Gao et al. (2021) <doi:10.1038/s41587-021-00867-x>, and Kriebel & Welch (2022) <doi:10.1038/s41467-022-28431-4>.'
+  summary: '''PLANC'', a highly parallel and extensible NMF/NTF  (Non-negative Matrix/Tensor Factorization) library. Wraps algorithms described in Kannan et. al (2018) <doi:10.1109/TKDE.2017.2767592> and Eswar et. al (2021) <doi:10.1145/3432185>. Implements algorithms described in Welch et al. (2019) <doi:10.1016/j.cell.2019.05.006>,
+    Gao et al. (2021) <doi:10.1038/s41587-021-00867-x>, and Kriebel & Welch (2022) <doi:10.1038/s41467-022-28431-4>.'
   license_file:
     - README.md
   homepage: https://github.com/welch-lab/libplanc
