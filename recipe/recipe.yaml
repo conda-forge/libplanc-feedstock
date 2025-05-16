@@ -186,6 +186,9 @@ outputs:
           then: libblas * *accelerate
           else: libblas
         - python
+        - scipy
+        - progressbar2
+        - threadpoolctl
     tests:
       - python:
           imports:
