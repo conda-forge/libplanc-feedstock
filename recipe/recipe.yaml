@@ -50,7 +50,6 @@ outputs:
           then: libgomp
           else: llvm-openmp
         - libblas
-        - libcblas
         - liblapack
         - libtmglib
         - indicators
@@ -99,12 +98,12 @@ outputs:
           - cmake --install .
       - if: win and (is_mingw == 'vs_')
         then:
-          - cmake -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
+          - cmake -S %SRC_DIR% -DBUILD_EXECUTABLE=ON %CMAKE_ARGS%
           - cmake --build . --config Release
           - cmake --install .
       - if: win and (is_mingw == 'mingw_')
         then:
-          - cmake -G "Unix Makefiles" -S %SRC_DIR% -DCBLAS_H_DIR=%LIBRARY_INC% -DBUILD_EXECUTABLE=ON -DCMAKE_INSTALL_PREFIX="%PREFIX%/Library" %CMAKE_ARGS%
+          - cmake -G "Unix Makefiles" -S %SRC_DIR% -DBUILD_EXECUTABLE=ON -DCMAKE_INSTALL_PREFIX="%PREFIX%/Library" %CMAKE_ARGS%
           - cmake --build .
           - cmake --install .
     tests:
@@ -143,7 +142,7 @@ outputs:
           - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
         - if: win and (is_mingw == 'vs_')
           then:
-          - set SKBUILD_CMAKE_ARGS="-DCBLAS_H_DIR=%LIBRARY_INC% %CMAKE_ARGS%"
+          - set SKBUILD_CMAKE_ARGS="%CMAKE_ARGS%"
           - pip install . -vv --no-deps --no-build-isolation --config-settings=build.targets=pyplanc
     requirements:
       build:
@@ -170,11 +169,9 @@ outputs:
         - if: osx and arm64
           then:
             - libblas * *accelerate
-            - libcblas * *accelerate
             - liblapack * *accelerate
           else:
             - libblas
-            - libcblas
             - liblapack
         - indicators
         - armadillo
