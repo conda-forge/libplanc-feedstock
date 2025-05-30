@@ -1,18 +1,17 @@
 schema_version: 1
 
 context:
-  libc_version: 1.0.1post1
-  build_number: 3
-  py_build_number: 0
-  py_version: 0.0.1post0
+  libc_version: 1.0.2
+  build_number: 0
+  py_version: 0.0.2
 
 recipe:
   name: libplanc-multi
-  version: 1.0.1
+  version: 1.0.2
 
 source:
   url: https://github.com/welch-lab/libplanc/archive/refs/tags/py-${{ py_version }}.tar.gz
-  sha256: ac6226d5b04708cba7167bc89e658aeecd1edadcfd23d1aa79a9e7e297fbc2a0
+  sha256: 9166b2efb6fc0af1cd91b5ef8494432c42c04a34499be9787e60640a732ae812
 
 build:
   number: ${{ build_number }}
@@ -119,8 +118,8 @@ outputs:
       version: ${{ py_version|replace("-", "_") }}
     build:
       skip: is_mingw == 'mingw_'
-      number: ${{ py_build_number }}
-      string: ${{ python | version_to_buildstring }}_h${{ hash }}_${{ py_build_number }}
+      number: ${{ build_number }}
+      string: ${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number }}
       script:
         - if: osx and (build_platform != target_platform)
           then:
