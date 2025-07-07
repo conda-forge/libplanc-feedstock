@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   libc_version: 1.0.2
-  build_number: 0
+  build_number: 1
   py_version: 0.0.2
 
 recipe:
@@ -12,6 +12,8 @@ recipe:
 source:
   url: https://github.com/welch-lab/libplanc/archive/refs/tags/py-${{ py_version }}.tar.gz
   sha256: 9166b2efb6fc0af1cd91b5ef8494432c42c04a34499be9787e60640a732ae812
+  patches:
+    - backport-constraint-fix.patch
 
 build:
   number: ${{ build_number }}
