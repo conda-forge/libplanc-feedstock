@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   libc_version: 1.0.2
-  build_number: 1
+  build_number: 2
   py_version: 0.0.2
 
 recipe:
@@ -40,10 +40,6 @@ outputs:
           else: llvm-openmp
         - cmake
         - pkg-config
-        - if: is_mingw == 'mingw_'
-          then:
-            - libgcc <14.3
-            - libgomp <14.3
       host:
         - libhwloc >=2.0.0,<3.0.0
         - zlib
@@ -59,19 +55,11 @@ outputs:
         - cpp-argparse
         - if: win
           then: dlfcn-win32
-        - if: is_mingw == 'mingw_'
-          then:
-            - libgcc <14.3
-            - libgomp <14.3
 
       run:
         - if: osx and arm64
           then: libblas * *accelerate
           else: libblas
-        - if: is_mingw == 'mingw_'
-          then:
-            - libgcc <14.3
-            - libgomp <14.3
       run_exports:
         - ${{ pin_subpackage('libplanc', exact=True) }}
     build:
