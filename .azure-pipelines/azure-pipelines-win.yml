@@ -8,11 +8,17 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_is_mingwmingw_:
-        CONFIG: win_64_is_mingwmingw_
+      win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_mingwmingw_:
+        CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_mingwmingw_
         UPLOAD_PACKAGES: 'True'
-      win_64_is_mingwvs_:
-        CONFIG: win_64_is_mingwvs_
+      win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_mingwvs_:
+        CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_mingwvs_
+        UPLOAD_PACKAGES: 'True'
+      win_64_channel_sourcesconda-forgeis_mingwmingw_:
+        CONFIG: win_64_channel_sourcesconda-forgeis_mingwmingw_
+        UPLOAD_PACKAGES: 'True'
+      win_64_channel_sourcesconda-forgeis_mingwvs_:
+        CONFIG: win_64_channel_sourcesconda-forgeis_mingwvs_
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
