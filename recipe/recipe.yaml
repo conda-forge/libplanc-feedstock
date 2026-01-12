@@ -43,14 +43,12 @@ outputs:
         - pkg-config
       host:
         - libhwloc >=2.0.0,<3.0.0
-        - zlib
         - hdf5 >=1.10
         - if: (c_compiler == 'gcc') or (is_mingw == 'mingw_')
           then: libgomp
           else: llvm-openmp
         - libblas
         - liblapack
-        - libtmglib
         - indicators
         - armadillo
         - cpp-argparse
