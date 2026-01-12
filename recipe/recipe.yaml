@@ -14,6 +14,7 @@ source:
   sha256: 9166b2efb6fc0af1cd91b5ef8494432c42c04a34499be9787e60640a732ae812
   patches:
     - backport-constraint-fix.patch
+    - 0001-Correct-non-pkgconf-case-for-HWLOC.patch
 
 build:
   number: ${{ build_number }}
