@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   libc_version: 1.0.2
-  build_number: 4
+  build_number: 5
   py_version: 0.0.2
 
 recipe:
@@ -14,6 +14,7 @@ source:
   sha256: 9166b2efb6fc0af1cd91b5ef8494432c42c04a34499be9787e60640a732ae812
   patches:
     - backport-constraint-fix.patch
+    - 0001-Correct-non-pkgconf-case-for-HWLOC.patch
 
 build:
   number: ${{ build_number }}
@@ -42,14 +43,12 @@ outputs:
         - pkg-config
       host:
         - libhwloc >=2.0.0,<3.0.0
-        - zlib
         - hdf5 >=1.10
         - if: (c_compiler == 'gcc') or (is_mingw == 'mingw_')
           then: libgomp
           else: llvm-openmp
         - libblas
         - liblapack
-        - libtmglib
         - indicators
         - armadillo
         - cpp-argparse
