@@ -18,6 +18,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '19'
+is_mingw:
+- ''
 libblas:
 - 3.9.* *netlib
 liblapack:
@@ -41,5 +43,3 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-zlib:
-- '1'
